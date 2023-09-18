@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["es2019", "dom"],
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "outDir": "./tsDist/",
+    "experimentalDecorators": true,
+
+  },
+
+  "files": ["./index.ts"],
+  "include": [
+    "./files/**/*"
+  ],
+
+  "extends": "./tsconfig-extends.json",
+  "compileOnSave": false,
+
+}
