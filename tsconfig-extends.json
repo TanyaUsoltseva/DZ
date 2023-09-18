@@ -1,0 +1,6 @@
+{
+  "exclude": [
+    "typescript/node_modules"
+  ],
+
+}

@@ -13,7 +13,7 @@
     "webpack-cli": "^4.10.0"
   },
   "scripts": {
-    "build": "webpack"
+    "build": "typescript/node_modules/.bin/webpack"
   }
 
 }

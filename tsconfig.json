@@ -5,7 +5,7 @@
     "sourceMap": true,
     "moduleResolution": "node",
     "outDir": "./tsDist/",
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
 
   },
 
@@ -15,6 +15,6 @@
   ],
 
   "extends": "./tsconfig-extends.json",
-  "compileOnSave": false,
+  "compileOnSave": false
 
 }

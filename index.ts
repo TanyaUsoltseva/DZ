@@ -1,5 +1,5 @@
 import {IUser} from "./interfaces/user";
-import {IUserJobPositions, IUsersInfo} from "./interfaces/usersinfo";
+import {IUserJobPositions} from "./interfaces/usersinfo";
 import {usersInfoArray} from "./usersinfo";
 import {UsersArray} from "./users";
 
