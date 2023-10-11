@@ -1,0 +1,37 @@
+<div class="d-flex flex-column">
+  <div>
+    <span class="mx-3">{{loginText}}</span>
+    <input type="text"
+           pInputText
+           [ngClass]="{'input-error': !login}"
+           [(ngModel)]="login"/>
+  </div>
+  <div>
+    <span class="mx-3">{{pswText}}</span>
+    <input class="mt-3"
+           type="text"
+           pInputText
+           [ngClass]="{'input-error': !psw}"
+           [(ngModel)]="psw"/>
+  </div>
+
+  <div class="mt-3">
+    <p-checkbox
+                label="Есть номер карты"
+                name="groupname" [binary]="true"
+                value="val" [(ngModel)]="selectedValue"></p-checkbox>
+    <div *ngIf="selectedValue">
+      <span class="mx-3">Номер карты</span>
+      <input class="mt-3"
+             type="text"
+             pInputText
+             [(ngModel)]="cardNumber"/>
+    </div>
+  </div>
+
+  <div class="mt-5 d-flex justify-content-center">
+    <button (click)="onAuth($event)" type="button" class="btn btn-success">{{authTextButton}}</button>
+  </div>
+</div>
+
+
