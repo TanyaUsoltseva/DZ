@@ -1,0 +1,14 @@
+<div class="d-flex">
+  <div class="flex-grow-1">
+    <p-menubar [model]="items"></p-menubar>
+  </div>
+  <ng-container *ngIf="user">
+    <p>{{user.login}}</p>
+  </ng-container>
+
+  <div class="timer-block">
+    <div>{{time | date: 'HH:mm:ss'}}</div>
+    <p class="timer-day p-0 m-0">{{time | date: 'EEEE'}}</p>
+  </div>
+
+</div>
