@@ -3,6 +3,7 @@ import {MessageService} from "primeng/api";
 import {IUser} from "../../../models/users";
 import {AuthService} from "../../services/auth/auth.service";
 import { StorageService } from '../../services/storage.service';
+import { ConfigService } from '../../services/config/config.service';
 
 @Component({
   selector: 'app-registration',
@@ -12,15 +13,20 @@ import { StorageService } from '../../services/storage.service';
 export class RegistrationComponent implements OnInit {
   login: string;
   psw: string;
+
   pswRepeat: string;
   email: string;
   cardNumber: string;
   selectedValue = false;
+  saveUserInStore: boolean;
+  showCardNumber: boolean
 
   constructor(private messageService: MessageService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              ) { }
 
   ngOnInit(): void {
+    this.showCardNumber = ConfigService.config.useUserCard;
   }
 
   registration(ev: Event): void | boolean {

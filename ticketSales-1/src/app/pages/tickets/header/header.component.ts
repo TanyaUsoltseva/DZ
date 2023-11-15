@@ -14,11 +14,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Input() menuType: IMenuType;
   items: MenuItem[];
   time: Date;
-  user: IUser;
+  user: IUser | null;
 
 
   private timerInterval: number;
-  settingsActive: boolean | undefined;
+  private settingsActive = false;
 
   constructor(private userService : UserService) { }
 

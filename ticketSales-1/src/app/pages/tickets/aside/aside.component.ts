@@ -1,10 +1,17 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IMenuType } from 'src/app/models/menuTupe';
+import { ITourTypeSelect } from 'src/app/models/tours';
+import { TicketService } from '../../services/tickets/ticket.service';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { SettingsService } from '../../services/settings/settings.service';
 
 @Component({
   selector: 'app-aside',
   templateUrl: './aside.component.html',
-  styleUrls: ['./aside.component.scss']
+  styleUrls: ['./aside.component.scss'],
+
+
 })
 export class AsideComponent implements OnInit {
 
@@ -12,14 +19,37 @@ export class AsideComponent implements OnInit {
 
 
   menuTypes: IMenuType[];
-  selectedMenuType: IMenuType
+  selectedMenuType: IMenuType;
+  tourTypes: ITourTypeSelect[] = [
+    {label: 'Все', value: 'all'},
+    {label: 'Одиночный', value: 'single'},
+    {label: 'Групповой', value: 'multi'}
+  ];
 
 
-  constructor() { }
+
+
+
+
+  constructor(
+    private ticketService: TicketService,
+    private messageService: MessageService,
+    private settingsService: SettingsService
+  ) { }
+
+  selectDate(ev: string) {
+    console.log('ev', ev)
+    this.ticketService.updateTour({date:ev})
+}
 
   changeType(ev: {ev: Event, value: IMenuType}): void {
     console.log('ev', ev)
     this.updateMenuType.emit(ev.value);
+  }
+
+  changeTourType(ev:  {ev: Event, value: ITourTypeSelect}): void {
+    console.log(ev)
+    this.ticketService.updateTour(ev.value)
   }
 
   ngOnInit(): void {
@@ -29,5 +59,23 @@ export class AsideComponent implements OnInit {
       {type: 'extended', label : 'Расширенное'}
     ]
   }
+
+  initRestError(): void {
+
+
+    this.ticketService.getError().subscribe({
+      next: (data) => {},
+      error: (err) => {
+        console.log('err', err)
+        this.messageService.add({severity:'error', summary: err.error})
+      }
+    })
+   }
+
+initSettingsData(): void {
+  this.settingsService.loadUserSettingsSubject({
+    saveToken: false
+  });
+}
 
 }

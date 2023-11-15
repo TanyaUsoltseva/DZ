@@ -11,6 +11,11 @@ import { AsideComponent } from './aside/aside.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { BlocksStyleDirective } from 'src/app/directiive/blocks-style.directive';
+import { SettingsModule } from '../settings/settings.module';
+import { CalendarModule } from 'primeng/calendar';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 
@@ -21,15 +26,19 @@ import { BlocksStyleDirective } from 'src/app/directiive/blocks-style.directive'
     FooterComponent,
     TicketListComponent,
     AsideComponent,
-    BlocksStyleDirective
+    BlocksStyleDirective,
   ],
   imports: [
     CommonModule,
     TicketsRoutingModule,
     MenubarModule,
     DropdownModule,
-    FormsModule
-
-  ]
+    FormsModule,
+    SettingsModule,
+    CalendarModule,
+    ToastModule,
+    InputTextModule
+  ],
+  providers: [MessageService]
 })
 export class TicketsModule { }

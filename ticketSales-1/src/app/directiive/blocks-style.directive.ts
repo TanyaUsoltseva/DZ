@@ -88,4 +88,8 @@ export class BlocksStyleDirective implements OnInit, AfterViewInit, OnChanges {
     }
   }
 
+  updateItems(): void {
+    this.items = this.el.nativeElement.querySelectorAll(this.selector);
+  }
+
 }
