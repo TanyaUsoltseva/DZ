@@ -67,4 +67,8 @@ getRandomNearestEvent(type: number): Observable<INearestTour> {
   return this.ticketServiceRest.getRandomNearestEvent(type);
 }
 
+sendTourData(data: any): Observable<any> {
+  return this.ticketServiceRest.sendTourData(data);
+}
+
 }

@@ -39,6 +39,10 @@ export class TicketRestService {
         return this.http.get<INearestTour>('/assets/mocks/nearestTours2.json');
     }
   }
+
+  sendTourData(data: any): Observable<any> {
+    return this.http.post('/assets/mocks/', data);
+  }
 }
 
 

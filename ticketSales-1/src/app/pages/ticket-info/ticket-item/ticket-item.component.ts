@@ -102,6 +102,14 @@ export class TicketItemComponent implements OnInit, AfterViewInit {
 
   onSubmit(): void {}
 
+  initTour(): void {
+    const userData = this.userForm.getRawValue();
+    const postData = {...this.ticket,...userData};
+    console.log('postData', postData)
+    console.log('    this.userForm.getRawValue()',    this.userForm.getRawValue())
+    this. ticketService.sendTourData(postData).subscribe()
+  }
+
   selectDate(ev: Event): void {
 
   }
