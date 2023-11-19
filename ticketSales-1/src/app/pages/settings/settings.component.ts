@@ -5,6 +5,7 @@ import { IMenuType } from 'src/app/models/menuTupe';
 import { MenuItem } from 'primeng/api';
 import { SettingsService } from '../services/settings/settings.service';
 
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',

@@ -11,7 +11,6 @@ import {CheckboxModule} from "primeng/checkbox";
 import { RegistrationComponent } from './registration/registration.component';
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
-import { PasswordChangeComponent } from './password-change/password-change.component';
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     AuthorizationComponent,
     AuthComponent,
     RegistrationComponent,
-    PasswordChangeComponent
 
   ],
   imports: [

@@ -1,1 +1,16 @@
-<p>settings works!</p>
+<div>
+  <p-tabView>
+    <p-tabPanel header="Смена пароля">
+      <app-password-change></app-password-change>
+    </p-tabPanel>
+
+
+    <p-tabPanel header="Статистика">
+      <ng-template pTemplate="content">
+        <app-statistic></app-statistic>
+      </ng-template>
+    </p-tabPanel>
+
+  </p-tabView>
+
+

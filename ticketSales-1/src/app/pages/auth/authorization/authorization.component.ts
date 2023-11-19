@@ -41,7 +41,6 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
   }
 
   onAuth(ev: Event): void {
-
       const authUser: IUser = {
         psw : this.psw,
         login: this.login,

@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       },
       {
         label: 'Настройки',
-        routerLink:['/settings'],
+        routerLink:['settings'],
         visible: this.settingsActive
       },
       {
@@ -50,7 +50,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         {
           label: 'Выйти',
           routerLink: ['/auth']
-        }
+        },
+
     ];
 
     this.timerInterval = window.setInterval(() => {
