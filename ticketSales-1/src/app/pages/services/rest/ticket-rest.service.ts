@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { INearestTour, ITour, ITourLocation } from 'src/app/models/tours';
+import { INearestTour, IOrder, ITour, ITourLocation } from 'src/app/models/tours';
 
 
 @Injectable({
@@ -9,10 +9,11 @@ import { INearestTour, ITour, ITourLocation } from 'src/app/models/tours';
 })
 export class TicketRestService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              ) { }
 
   getTickets(): Observable<ITour[]> {
-    return this.http.get<ITour[]>('https://62b9e756ff109cd1dc9dae16.mockapi.io/apiv/v1/tours/');
+    return this.http.get<ITour[]>("http://localhost:3000/tours/");
   }
 
   getRestError(): Observable<any> {
@@ -40,8 +41,27 @@ export class TicketRestService {
     }
   }
 
-  sendTourData(data: any): Observable<any> {
-    return this.http.post('/assets/mocks/', data);
+  sendTourData(data: IOrder): Observable<any> {
+    return this.http.post("http://localhost:3000/tours/", data);
+  }
+
+  getTicketById(id: string): Observable<ITour> {
+    return this.http.get<ITour>("http://localhost:3000/tours/"+id);
+  }
+
+
+  initTours(): Observable<ITour[]> {
+    return this.http.post<ITour[]>("http://localhost:3000/tours/", {});
+  }
+
+  deleteTours(): Observable<Object>{
+    return this.http.delete("http://localhost:3000/tours/");
+  }
+
+  createTour(body: any): Observable<any> {
+    return this.http.post("http//localhost:3000/tour-item/", body, {headers: {
+
+    }})
   }
 }
 

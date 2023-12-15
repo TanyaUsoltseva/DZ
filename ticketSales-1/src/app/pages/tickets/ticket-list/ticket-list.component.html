@@ -1,7 +1,7 @@
 <div>
-  <div *ngIf="loaded">
+  <div *ngIf="loaded && tickets.length">
    <p>Количество элементов: {{tickets.length}}</p>
-   <p>Активный элемент: {{blockDirective.activeElementIndex}}</p>
+   <p>Активный элемент: {{blockDirective?.activeElementIndex}}</p>
   </div>
 
   <div class="mb-4">

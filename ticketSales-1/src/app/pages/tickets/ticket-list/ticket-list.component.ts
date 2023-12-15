@@ -41,6 +41,10 @@ export class TicketListComponent implements OnInit, OnDestroy{
 
 
   ngOnInit(): void {
+
+    this.ticketService.ticketUpdateSubject$.subscribe((data) =>{
+      this.tickets = data;
+    })
     this.getTickets();
 
     this.tourUnsubscriber = this.ticketService.ticketType$.subscribe((data:ITourTypeSelect) => {
@@ -114,6 +118,8 @@ export class TicketListComponent implements OnInit, OnDestroy{
            this.tickets = data;
            this.ticketsCopy = [...this.tickets];
            this.ticketStorage.setStorage(data);
+      }, (err) => {
+
       }
     )
   }

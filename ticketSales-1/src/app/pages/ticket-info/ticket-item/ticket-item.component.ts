@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ICustomTicketData, INearestTour, ITour, ITourLocation } from 'src/app/models/tours';
+import { ICustomTicketData, INearestTour, IOrder, ITour, ITourLocation } from 'src/app/models/tours';
 import { TicketsStorageService } from '../../services/tickets-storage/tickets-storage.service';
 import { IUser } from 'src/app/models/users';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -105,9 +105,18 @@ export class TicketItemComponent implements OnInit, AfterViewInit {
   initTour(): void {
     const userData = this.userForm.getRawValue();
     const postData = {...this.ticket,...userData};
-    console.log('postData', postData)
-    console.log('    this.userForm.getRawValue()',    this.userForm.getRawValue())
-    this. ticketService.sendTourData(postData).subscribe()
+
+    const userId = this.userService.getUser().id || null;
+
+    const postObj: IOrder = {
+      age: postData.age,
+      birthDay: postData.birthDay,
+      cardNumber: postData.cardNumber,
+      tourId: postData._id,
+      userId: userId,
+    }
+
+    this. ticketService.sendTourData(postObj).subscribe()
   }
 
   selectDate(ev: Event): void {

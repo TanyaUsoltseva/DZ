@@ -1,10 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IMenuType } from 'src/app/models/menuTupe';
-import { ITourTypeSelect } from 'src/app/models/tours';
+import { ITour, ITourTypeSelect } from 'src/app/models/tours';
 import { TicketService } from '../../services/tickets/ticket.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { SettingsService } from '../../services/settings/settings.service';
+import { TicketRestService } from '../../services/rest/ticket-rest.service';
 
 @Component({
   selector: 'app-aside',
@@ -34,7 +35,8 @@ export class AsideComponent implements OnInit {
   constructor(
     private ticketService: TicketService,
     private messageService: MessageService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private ticketRest: TicketRestService
   ) { }
 
   selectDate(ev: string) {
@@ -76,6 +78,19 @@ initSettingsData(): void {
   this.settingsService.loadUserSettingsSubject({
     saveToken: false
   });
+}
+
+initTours(): void {
+  this.ticketRest.initTours().subscribe((data :ITour[]) => {
+    this.ticketService.updateTicketList(data);
+  });
+}
+
+deleteTours(): void {
+  this.ticketRest.deleteTours().subscribe((data :Object) => {
+    this.ticketService.updateTicketList([]);
+  });
+
 }
 
 }

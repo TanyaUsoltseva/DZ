@@ -2,11 +2,12 @@ export interface ITour {
   name: string,
   description: string,
   tourOperator: string,
-  price: string;
-  img: string;
-  id: string;
-  type: string;
-  date: string;
+  price: string,
+  img: string,
+  id: string,
+  type: string,
+  date: string,
+  _id: string,
 }
 
 export type TourType = 'Одиночный' | 'Групповой';
@@ -27,4 +28,13 @@ export interface ICustomTicketData extends INearestTour {
 export interface ITourLocation {
   name: string,
   id: string,
+}
+
+export interface IOrder {
+  age: string,
+  birthDay: string,
+  cardNumber: string,
+  tourId: string,
+  userId: string | null,
+  _id?: string
 }

@@ -7,6 +7,11 @@ import { ICustomTicketData, INearestTour, ITour, ITourLocation, ITourTypeSelect 
   providedIn: 'root'
 })
 export class TicketService {
+  private ramdomEndpoints = ["nearestTours1.json", "nearestTours2.json","nearestTours3.json"]
+
+  private ticketUpdateSubject = new Subject<ITour[]>();
+
+  readonly ticketUpdateSubject$ = this.ticketUpdateSubject.asObservable();
 
   private ticketSubject = new Subject<ITourTypeSelect>();
 
@@ -20,12 +25,17 @@ export class TicketService {
 
  // 2 вариант доступа к Observable
 
+
  getTicketTypeObservable(): Observable<ITourTypeSelect> {
   return this.ticketSubject.asObservable();
  }
 
  updateTour(type:ITourTypeSelect): void {
    this.ticketSubject.next(type);
+ }
+
+ updateTicketList(data: ITour[]) {
+  this.ticketUpdateSubject.next(data);
  }
 
  getTickets(): Observable<ITour[]> {
@@ -36,7 +46,6 @@ export class TicketService {
       return value.concat(singleTours);
 
     }
-
 
   ));
 }
@@ -68,7 +77,16 @@ getRandomNearestEvent(type: number): Observable<INearestTour> {
 }
 
 sendTourData(data: any): Observable<any> {
+
   return this.ticketServiceRest.sendTourData(data);
+}
+
+getTicketById(id: string): Observable<ITour> {
+  return this.ticketServiceRest.getTicketById(id);
+}
+
+createTour (body: any) {
+  return this.ticketServiceRest.createTour(body)
 }
 
 }
