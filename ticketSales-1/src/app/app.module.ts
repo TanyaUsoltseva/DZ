@@ -11,6 +11,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from "primeng/table"
 import { SettingsModule } from "./pages/settings/settings.module";
+import { OrderModule } from './pages/order/order.module';
 
 
 
@@ -41,7 +42,8 @@ function initializeApp(config: ConfigService) {
         TabViewModule,
         FormsModule,
         TableModule,
-        SettingsModule
+        SettingsModule,
+        OrderModule
     ]
 })
 

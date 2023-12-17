@@ -16,6 +16,7 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { SettingsModule } from '../settings/settings.module';
+import { OrderModule } from '../order/order.module';
 
 
 
@@ -38,6 +39,7 @@ import { SettingsModule } from '../settings/settings.module';
     ToastModule,
     InputTextModule,
     SettingsModule,
+    OrderModule
   ],
   providers: [MessageService]
 })

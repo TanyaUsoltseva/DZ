@@ -67,6 +67,8 @@ export class TicketItemComponent implements OnInit, AfterViewInit {
 
     const paramValueId = routeIdParam || queryIdParam;
     if (paramValueId) {
+      console.log('paramValueId', paramValueId);
+
       const ticketStorage = this.ticketStorage.getStorage();
       this.ticket = ticketStorage.find((el) => el.id === paramValueId);
       console.log('this.ticket', this.ticket)
@@ -117,6 +119,7 @@ export class TicketItemComponent implements OnInit, AfterViewInit {
     }
 
     this. ticketService.sendTourData(postObj).subscribe()
+
   }
 
   selectDate(ev: Event): void {

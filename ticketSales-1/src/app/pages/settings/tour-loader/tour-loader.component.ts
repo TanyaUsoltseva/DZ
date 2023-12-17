@@ -41,6 +41,8 @@ export class TourLoaderComponent implements OnInit {
       this.tourForm.patchValue( {
         img: file
       });
+      console.log('tourForm', this.tourForm);
+
     }
   }
 

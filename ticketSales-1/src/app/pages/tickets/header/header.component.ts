@@ -29,6 +29,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         routerLink:['tickets-list']
       },
       {
+        label: 'Заказы',
+        routerLink:['order']
+      },
+      {
         label: 'Настройки',
         routerLink:['settings'],
         visible: this.settingsActive
@@ -37,22 +41,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         label: 'Выйти',
         routerLink:['/auth']
       },
-
     ];
   }
 
   ngOnInit() {
-    this.items = [
-        {
-          label: 'Билеты',
-          routerLink: ['tickets-list']
-        },
-        {
-          label: 'Выйти',
-          routerLink: ['/auth']
-        },
-
-    ];
+    this.items = this.initMenuItems();
 
     this.timerInterval = window.setInterval(() => {
       this.time = new Date();

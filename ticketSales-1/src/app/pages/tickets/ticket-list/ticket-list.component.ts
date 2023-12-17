@@ -100,7 +100,7 @@ export class TicketListComponent implements OnInit, OnDestroy{
 
   goToTicketInfoPage(item: ITour) {
 
-    this.router.navigate([`/tickets/ticket/${item.id}`])
+    this.router.navigate([`/tickets/ticket/${item._id}`])
 
    //this.router.navigate([`/tickets/ticket`], {queryParams:{id:item.id}})
   }
